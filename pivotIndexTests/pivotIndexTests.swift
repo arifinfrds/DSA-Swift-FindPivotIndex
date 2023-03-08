@@ -15,7 +15,7 @@ class Solution {
             return -1
         }
         
-        for (index, number) in nums.enumerated() {
+        for (index, _) in nums.enumerated() {
             
             let leftSum = calculateLeftSum(beforeIndex: index, source: nums)
             let rightSum = calculateRightSum(afterIndex: index, source: nums)
