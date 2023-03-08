@@ -23,5 +23,13 @@ final class pivotIndexTests: XCTestCase {
         
         XCTAssertEqual(result, -1)
     }
+    
+    func test_pivotIndex_returnsMinusOneOnNotFoundIndex() {
+        let sut = Solution()
+        
+        let result = sut.pivotIndex([1,2,3])
+        
+        XCTAssertEqual(result, -1)
+    }
 
 }
