@@ -8,6 +8,7 @@
 import XCTest
 @testable import pivotIndex
 
+// O(n^2) -> O(n)
 class Solution {
     func pivotIndex(_ nums: [Int]) -> Int {
         
@@ -15,42 +16,28 @@ class Solution {
             return -1
         }
         
-        for (index, _) in nums.enumerated() {
+        var leftSum = 0
+        let total = nums.total
+        
+        for (index, number) in nums.enumerated() {
             
-            let leftSum = calculateLeftSum(beforeIndex: index, source: nums)
-            let rightSum = calculateRightSum(afterIndex: index, source: nums)
+            let rightSum = total - (leftSum + number)
             
             if leftSum == rightSum {
                 return index
             }
+            leftSum += number
         }
         return -1
     }
-    
-    // MARK: - Helpers
-    
-    private func calculateLeftSum(beforeIndex index: Int, source nums: [Int]) -> Int {
+}
+
+private extension Array where Element == Int {
+    var total: Int {
         var sum = 0
-        
-        for i in 0..<index {
-            sum += nums[i]
+        for number in self {
+            sum += number
         }
-        
-        return sum
-    }
-    
-    private func calculateRightSum(afterIndex index: Int, source nums: [Int]) -> Int {
-        
-        guard (index + 1) < nums.count else {
-            return 0
-        }
-        
-        var sum = 0
-        
-        for i in (index + 1)...nums.count - 1 {
-            sum += nums[i]
-        }
-        
         return sum
     }
 }
