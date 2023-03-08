@@ -80,5 +80,13 @@ final class pivotIndexTests: XCTestCase {
         
         XCTAssertEqual(result, 0)
     }
+    
+    func test_pivotIndex_returnsCorrectPivotIndex() {
+        let sut = Solution()
+        
+        let result = sut.pivotIndex([1,7,3,6,5,6])
+        
+        XCTAssertEqual(result, 3)
+    }
 
 }
