@@ -16,7 +16,7 @@ class Solution {
 
 final class pivotIndexTests: XCTestCase {
 
-    func test_pivotIndex_returnsMinusOneOnNotFoundPivotIndex() {
+    func test_pivotIndex_returnsMinusOneOnEmptyArray() {
         let sut = Solution()
         
         let result = sut.pivotIndex([])
